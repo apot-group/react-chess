@@ -4,6 +4,7 @@ import App from "./App";
 
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/react-chess.scss"
+import "antd/dist/antd.css";
 
 ReactDOM.render(
   <div>
