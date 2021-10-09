@@ -1,0 +1,6 @@
+# backend
+__pycache__
+*.ini
+
+# frontend
+node_modules
