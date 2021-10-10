@@ -44,6 +44,11 @@ module.exports = (server) => {
             });
         });
 
+        // sent status of game
+        socket.on("game", (isStart, gameType, squares) => {
+
+        })
+
         //when the user exits the room
         socket.on("disconnect", () => {
             //the user is deleted from array of users and a left room message displayed
