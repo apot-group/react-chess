@@ -2,6 +2,7 @@
 import React from 'react';
 import Menu from '../menu/Menu';
 import RoomDetails from './RoomDetails';
+import initialiseChessBoard from '../../logic/chess/init-chessboard';
 
 
 export default class GameMain extends React.Component {
@@ -16,19 +17,18 @@ export default class GameMain extends React.Component {
                 message: 'Welcome to React Chess. Please press Start New Game to begin.',
                 type: 'info',
                 showIcon: false
-            }
+            },
+            squares: initialiseChessBoard(),
            
         }
         this.subscribeUser = this.subscribeUser.bind(this)
+        this.onGameTypeSelected = this.onGameTypeSelected.bind(this)
 
     }
 
-    subscribeUser(userName){
-        this.setState({currentUser: userName})
-
-        return {currentUser: this.state.currentUser, roomId: this.state.roomId}
-    }
-   
+    subscribeUser(){return {currentUser: this.state.currentUser, roomId: this.state.roomId}}
+    onGameTypeSelected(e){console.log(e); this.setState({gameType: e.target.value}); return this.state.gameType}
+    onClick(i){ return i}
 
     render() {
         return ( 
@@ -40,15 +40,17 @@ export default class GameMain extends React.Component {
                     subscribeUser={this.subscribeUser}
                 />
                 <RoomDetails
-                    // onGameTypeSelected={this.onGameTypeSelected}
+                    gameStatus={this.state.gameStatus} // status for of game
+                    onGameTypeSelected={(e) => this.onGameTypeSelected} // footer select type of game
+                    gameType={this.state.gameType}
+                    squares = {this.state.squares} // make sent to board squares array now
+                    onClick = {this.onClick}
                     // setOrientation={this.setOrientation}
                     // resetGame={this.resetGame}
-                    // gameType={this.state.gameType}
                     // isReset={this.state.isReset}
                     // fen={this.state.fen}
                     // afterUpdateCallback={this.afterUpdateCallback}
                     // onMoveCallback={this.onMoveCallback}
-                    gameStatus={this.state.gameStatus}
                     // orientation={this.state.orientation}
                     // roomUsers={this.state.roomUsers}
                     // sendMessage={this.sendMessage}
