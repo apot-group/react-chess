@@ -1,6 +1,8 @@
 import { Card } from 'antd';
 import * as React from 'react';
 import GameStatus from './GameStatus'
+import ChessBoard from '../chess/ChessBoard'
+import ChessFooter from '../chess/ChessFooter'
 
 
 const RoomDetails = (props) => {
@@ -14,7 +16,7 @@ const RoomDetails = (props) => {
             />
           }
       >
-        {/* <div className="roomdetails-wrapper">
+        <div className="roomdetails-wrapper">
           <div>
             <ChessBoard
               isReset={props.isReset}
@@ -30,14 +32,14 @@ const RoomDetails = (props) => {
               gameType={props.gameType}
             />
           </div>
-          <div className="roomdetails--mid-pane">
+          {/* <div className="roomdetails--mid-pane">
             <p className="roomdetails--mid-pane-title">Users</p>
             <div className="roomdetails--mid-pane-users">
               {props.roomUsers.map( (user, i) => <p className="roomdetails--mid-pane-user" key={i}>{user}</p>)}
             </div>
-          </div>
-          <ChatClient sendMessage={props.sendMessage} messagesArray={props.messagesArray} />
-        </div> */}
+          </div> */}
+          {/* <ChatClient sendMessage={props.sendMessage} messagesArray={props.messagesArray} /> */}
+        </div>
       </Card>
     );
   };
