@@ -3,6 +3,7 @@ import React from 'react';
 import Menu from '../menu/Menu';
 import RoomDetails from './RoomDetails';
 import initialiseChessBoard from '../../logic/chess/init-chessboard';
+import SocketIo from '../../services/socket';
 
 
 export default class GameMain extends React.Component {
@@ -10,25 +11,58 @@ export default class GameMain extends React.Component {
         super(props);
         this.state = {
             gameType: 'friends',
-            roomId: '113',
-            roomUsers: ['duy', 'gai'],
-            currentUser: 'duy',
+            roomId: '',
+            roomUsers: [],
+            currentUser: '',
             gameStatus: {
                 message: 'Welcome to React Chess. Please press Start New Game to begin.',
                 type: 'info',
                 showIcon: false
             },
             squares: initialiseChessBoard(),
-           
+            messagesArray: [],
         }
-        this.subscribeUser = this.subscribeUser.bind(this)
+
+
+        // this.newUserListener = this.newUserListener.bind(this)
+        // this.subscribeUser = this.subscribeUser.bind(this)
         this.onGameTypeSelected = this.onGameTypeSelected.bind(this)
 
     }
+    componentDidMount(){
+        SocketIo.emit("joinRoom", { userName: 'duy', roomId: '1' });
+        SocketIo.on("message", (data) => {
+            console.log(data)
+            this.setState({roomUsers: [data.username], roomId: data.roomId, currentUser: data.userId})
+        })
 
-    subscribeUser(){return {currentUser: this.state.currentUser, roomId: this.state.roomId}}
+    }
+ 
+    // newMessageListener(messageObj){
+    //     if (messageObj.userName === this.state.currentUser) {
+    //         messageObj.from = 'self';
+    //       }
+    //       this.setState({
+    //         messagesArray: [...this.state.messagesArray, messageObj]
+    //       });
+    // }
+    // newUserListener(newUserObj){
+    //     this.setState({
+    //         roomId: newUserObj.roomId,
+    //         roomUsers: newUserObj.roomUsers
+    //       });
+    // }
+    // subscribeUser(userInfo){
+    //     console.log(userInfo)
+    //     this.setState({currentUser: userInfo.userName});
+
+
+    //     // return {currentUser: this.state.currentUser, roomId: this.state.roomId}
+    // }
+
     onGameTypeSelected(e){console.log(e); this.setState({gameType: e.target.value}); return this.state.gameType}
     onClick(i){ return i}
+    sendMessage(message){if (message !== '') SocketIo.emit('chat', message)}
 
     render() {
         return ( 
@@ -37,24 +71,18 @@ export default class GameMain extends React.Component {
                     roomId={this.state.roomId}
                     roomUsers={this.state.roomUsers}
                     currentUser={this.state.currentUser}
-                    subscribeUser={this.subscribeUser}
+                    // subscribeUser={(e) => this.subscribeUser(e)}
                 />
                 <RoomDetails
                     gameStatus={this.state.gameStatus} // status for of game
                     onGameTypeSelected={(e) => this.onGameTypeSelected} // footer select type of game
                     gameType={this.state.gameType}
                     squares = {this.state.squares} // make sent to board squares array now
-                    onClick = {this.onClick}
-                    // setOrientation={this.setOrientation}
-                    // resetGame={this.resetGame}
-                    // isReset={this.state.isReset}
-                    // fen={this.state.fen}
-                    // afterUpdateCallback={this.afterUpdateCallback}
-                    // onMoveCallback={this.onMoveCallback}
-                    // orientation={this.state.orientation}
-                    // roomUsers={this.state.roomUsers}
-                    // sendMessage={this.sendMessage}
-                    // messagesArray={this.state.messagesArray}
+                    onClick = {this.onClick} // sent status of location click now
+                    sendMessage={this.sendMessage} // message sent from client on chat box
+                    messagesArray={this.state.messagesArray} // array of total chat mess
+        
+
                 />
             </div>
         );

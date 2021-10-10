@@ -3,6 +3,7 @@ import * as React from 'react';
 import GameStatus from './GameStatus'
 import ChessBoard from '../chess/ChessBoard'
 import ChessFooter from '../chess/ChessFooter'
+// import ChatClient from '../chat/ChatClient'
 
 
 export default class RoomDetails extends React.Component {
@@ -12,7 +13,9 @@ export default class RoomDetails extends React.Component {
       squares: this.props.squares,
       gameStatus: this.props.gameStatus,
       onGameTypeSelected: this.props.onGameTypeSelected,
-      gameType: this.props.gameType
+      gameType: this.props.gameType,
+      sendMessage: this.props.sendMessage,
+      messagesArray: this.props.messagesArray
     }
   }
   render(){
@@ -43,6 +46,7 @@ export default class RoomDetails extends React.Component {
                gameType={this.state.gameType}
              />
           </div>
+          {/* <ChatClient sendMessage={this.state.sendMessage} messagesArray={this.state.messagesArray} /> */}
         </div>
       </Card>
     )
@@ -58,7 +62,7 @@ export default class RoomDetails extends React.Component {
 //               {props.roomUsers.map( (user, i) => <p className="roomdetails--mid-pane-user" key={i}>{user}</p>)}
 //             </div>
 //           </div> */}
-//           {/* <ChatClient sendMessage={props.sendMessage} messagesArray={props.messagesArray} /> */}
+//           
 //         </div>
 //       </Card>
 //     );

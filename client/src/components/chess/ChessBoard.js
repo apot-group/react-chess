@@ -15,16 +15,15 @@ export default class ChessBoard extends React.Component {
     // define render square
     renderSquare(i, squareShade) {
         return <Square 
-        piece = {this.props.squares[i]} 
-        style = {this.props.squares[i]? this.props.squares[i].style : null}
-        shade = {squareShade}
-        onClick={() => this.props.onClick(i)}
+            piece = {this.props.squares[i]} 
+            style = {this.props.squares[i]? this.props.squares[i].style : null}
+            shade = {squareShade}
+            onClick={() => this.props.onClick(i)}
         />
     }
 
     render() {
         const board = []
-
         for(let i = 0; i < 8; i++){
             const squareRows = [];
             for(let j = 0; j < 8; j++){
