@@ -15,6 +15,7 @@ export default class ChessBoard extends React.Component {
     // define render square
     renderSquare(i, squareShade) {
         return <Square 
+            key = {i}
             piece = {this.props.squares[i]} 
             style = {this.props.squares[i]? this.props.squares[i].style : null}
             shade = {squareShade}
@@ -30,7 +31,7 @@ export default class ChessBoard extends React.Component {
                 const squareShade = (isEven(i) && isEven(j)) || (!isEven(i) && !isEven(j))? "light-square" : "dark-square";
                 squareRows.push(this.renderSquare((i*8) + j, squareShade));
             }
-            board.push(<div className="board-row">{squareRows}</div>)
+            board.push(<div key={i} className="board-row">{squareRows}</div>)
         }
         return ( 
             <div>

@@ -1,6 +1,7 @@
-.chatclient--textarea {
-    width: 400px;
-    height: 500px;
+.chatclient-textarea {
+    margin-top: 20px;
+    width: 375px;
+    height: 600px;
     border: 1px solid #e8e8e8;
     margin-bottom: 10px;
     background-color: #f5f5f5;
@@ -8,20 +9,21 @@
     overflow-y: scroll;
     .chatclient-wrapper {
         float: left;
+  
         .chatclient-wrapper.self {
             float: right;
         }
-        .chatclient-wrapper.chatbot {
+        .chatclient-wrapper-chatbot {
             border-radius: 5px;
             background-color: #f6ffed;
             border: 1px solid #b7eb8f;
-            width: 100%;
+            width: 344px;
             margin-bottom: 10px;
             padding: 5px;
-        }
-        .chatclient-wrapper.chatbot img {
-            height: 40px;
-            margin-right: 10px;
+            .img-fix {
+                height: 50px;
+            }
+           
         }
     }
     .chatclient--message {
@@ -63,7 +65,7 @@
         color: #8c8c8c;
         line-height: normal;
         padding: 5px;  
-        .chatclient-user.chatbot {
+        .chatclient-user .chatbot {
             color: #f5222d;
             font-size: 16px;
             font-weight: 600;

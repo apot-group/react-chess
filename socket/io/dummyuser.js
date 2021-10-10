@@ -1,5 +1,8 @@
 const c_users = [];
 
+// const redisClient = require('../redis');
+
+
 // joins the user to the specific chatroom
 function join_User(id, username, room) {
   const p_user = { id, username, room };

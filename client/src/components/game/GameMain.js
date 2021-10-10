@@ -20,7 +20,7 @@ export default class GameMain extends React.Component {
                 showIcon: false
             },
             squares: initialiseChessBoard(),
-            messagesArray: [],
+            messagesArray: [{from: 'chatbot', message: '', userName: 'BoT'}],
         }
 
 
@@ -30,9 +30,13 @@ export default class GameMain extends React.Component {
 
     }
     componentDidMount(){
+
         SocketIo.emit("joinRoom", { userName: 'duy', roomId: '1' });
         SocketIo.on("message", (data) => {
-            console.log(data)
+            if (data.from !== 'bot') {
+                let array = this.state.messagesArray;
+                array.push({from: data.userName, message: data.text, userName: data.userName})
+            }
             this.setState({roomUsers: [data.username], roomId: data.roomId, currentUser: data.userId})
         })
 
@@ -62,7 +66,10 @@ export default class GameMain extends React.Component {
 
     onGameTypeSelected(e){console.log(e); this.setState({gameType: e.target.value}); return this.state.gameType}
     onClick(i){ return i}
-    sendMessage(message){if (message !== '') SocketIo.emit('chat', message)}
+    sendMessage(message){
+        console.log(message)
+        if (message !== '') SocketIo.emit('chat', message)
+    }
 
     render() {
         return ( 

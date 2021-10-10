@@ -1,5 +1,4 @@
 const socketIo  = require('socket.io');
-// const redisClient = require('../redis');
 
 
 const { get_Current_User, user_Disconnect, join_User } = require("./dummyuser");
@@ -21,6 +20,7 @@ module.exports = (server) => {
               userName: p_user.username,
               roomId: roomId,
               text: `Welcome ${p_user.username}`,
+              from: 'bot'
             });
         
             //displays a joined room message to all other room users except that particular user
@@ -35,10 +35,11 @@ module.exports = (server) => {
         socket.on("chat", (text) => {
             //gets the room user and the message sent
             const p_user = get_Current_User(socket.id);
+            console.log(p_user)
 
             io.to(p_user.room).emit("message", {
             userId: p_user.id,
-            username: p_user.username,
+            userName: p_user.username,
             text: text,
             });
         });

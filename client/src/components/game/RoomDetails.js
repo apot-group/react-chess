@@ -3,7 +3,7 @@ import * as React from 'react';
 import GameStatus from './GameStatus'
 import ChessBoard from '../chess/ChessBoard'
 import ChessFooter from '../chess/ChessFooter'
-// import ChatClient from '../chat/ChatClient'
+import ChatClient from '../chat/ChatClient'
 
 
 export default class RoomDetails extends React.Component {
@@ -15,7 +15,8 @@ export default class RoomDetails extends React.Component {
       onGameTypeSelected: this.props.onGameTypeSelected,
       gameType: this.props.gameType,
       sendMessage: this.props.sendMessage,
-      messagesArray: this.props.messagesArray
+      messagesArray: this.props.messagesArray,
+      onClick: this.props.onClick
     }
   }
   render(){
@@ -33,7 +34,7 @@ export default class RoomDetails extends React.Component {
           <div>
              <ChessBoard
               squares = {this.state.squares}
-               onClick={this.props.onClick}
+              onClick={this.state.onClick}
               //  fen={props.fen}
               //  onMoveCallback={props.onMoveCallback}
               //  afterUpdateCallback={props.afterUpdateCallback}
@@ -46,7 +47,7 @@ export default class RoomDetails extends React.Component {
                gameType={this.state.gameType}
              />
           </div>
-          {/* <ChatClient sendMessage={this.state.sendMessage} messagesArray={this.state.messagesArray} /> */}
+          <ChatClient sendMessage={this.state.sendMessage} messagesArray={this.state.messagesArray} />
         </div>
       </Card>
     )
