@@ -3,7 +3,7 @@ import configparser
 
 
 cfg = configparser.ConfigParser()
-cfg.read('./env-stag.ini')
+cfg.read('./env.ini')
 
 
 #=========================================================================
@@ -12,14 +12,18 @@ cfg.read('./env-stag.ini')
 PROJECT = cfg['project']
 PROJECT_NAME = PROJECT['name']
 ENVIRONMENT = PROJECT['environment']
-HOST_NAME = PROJECT['host_name']
 
+API = cfg['api']
+API_PORT = API.getint('port')
+API_HOST = API['host']
 
-BACKEND = cfg['backend']
-BE_PORT = BACKEND.getint('port')
-FRONTEND = cfg['frontend']
-FE_PORT = FRONTEND.getint('port')
+CLIENT = cfg['client']
+CLIENT_PORT = CLIENT.getint('port')
+CLIENT_HOST = CLIENT['host']
 
+SOCKET = cfg['socket']
+SOCKET_PORT = SOCKET.getint('port')
+SOCKET_HOST = SOCKET['host']
 
 #=========================================================================
 #                          DATABASE INFORMATION 

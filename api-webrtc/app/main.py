@@ -1,6 +1,5 @@
 import uvicorn
-from fastapi import FastAPI
-from fastapi.routing import APIRoute
+from fastapi import FastAPI, APIRouter
 from settings import config
 from databases.db import Session
 from starlette.requests import Request
@@ -30,14 +29,11 @@ app.include_router(v1.router, prefix="/api/v1")
 
 # ++++++++++++++++++++++++++++++++++++++++++++ CORS MIDDLEWARE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 origins = [
-    "http://{host}".format(host=config.HOST_NAME),
-    "http://{host}:{port}".format(host=config.HOST_NAME, port = config.BE_PORT),
-    "http://{host}:{port}".format(host=config.HOST_NAME, port = config.FE_PORT),
-    "http://10.1.133.3:8081",
-    "http://10.1.133.3",
-
-
+    "http://{host}:{port}".format(host=config.API_HOST, port=config.API_PORT),
+    "http://{host}:{port}".format(host=config.CLIENT_HOST, port=config.CLIENT_PORT),
+    "http://{host}:{port}".format(host=config.SOCKET_HOST, port=config.SOCKET_PORT)
 ]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -58,4 +54,4 @@ async def db_session_middleware(request: Request, call_next):
 
 # ++++++++++++++++++++++++++++++++++++++++++++++ RUN SERVICE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 if __name__ == "__main__":
-    uvicorn.run(app, host='0.0.0.0',port=config.BE_PORT,debug=True)
+    uvicorn.run(app, host='0.0.0.0',port=config.API_PORT, debug=True)

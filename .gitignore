@@ -1,6 +1,6 @@
-# backend
+# api
 __pycache__
 *.ini
 
-# frontend
+# frontend and socket
 node_modules

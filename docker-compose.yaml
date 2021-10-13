@@ -2,13 +2,55 @@ version: '3.8'
 
 
 services:
+
   redis:
+    container_name: redis
     image: redis:6-alpine
     ports:
       - "6379:6379"
     command: redis-server --requirepass password
     networks:
       - react-chess
+    restart: unless-stopped
+
+  postgresql:
+    container_name: postgresql
+    image: postgres:14.0-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=1q2w3e4r
+    volumes:
+      - ./postgres/postgres.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+  socket:
+    container_name: socket
+    ports:
+      - "3001:3001"
+    build:
+      context: ./socket
+      dockerfile: ./Dockerfile
+    command: node server
       
+  api-webrtc:
+    container_name: api
+    build:
+      context: ./api-webrtc
+      dockerfile: ./Dockerfile
+    ports:
+      - "3002:3002"
+    command: uvicorn main:app --host 0.0.0.0 --port 8081 --reload
+    depends_on:
+      - postgresql
+    
+
+
+  # web-client:
+  #   build:
+  #     context: ./client
+  #     dockerfile: ./Dockerfile
+
 networks:
   react-chess:

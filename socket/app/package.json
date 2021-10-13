@@ -1,0 +1,16 @@
+{
+    "name": "socket-react-chess",
+    "version": "1.0.0",
+    "description": "socket for chat on game and logic of react-chess!",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "Duy Nguyen",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "socket.io": "^4.2.0"
+    }
+}

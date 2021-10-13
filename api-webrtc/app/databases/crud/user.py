@@ -1,7 +1,6 @@
 from databases.models.user import User
 from databases.entities.user import UserCreate
 from sqlalchemy.orm import Session
-from sqlalchemy.orm import joinedload
 
 
 def create(*, db: Session, form_data: UserCreate) -> User:
@@ -12,7 +11,9 @@ def create(*, db: Session, form_data: UserCreate) -> User:
     return load_model
 
 def update(*, db: Session, form_data: dict) -> User:
-    return db.query(User).filter(User.id == form_data.id).update(form_data, synchronize_session = False)
+    data = db.query(User).filter(User.id == form_data.id).update(form_data, synchronize_session = False)
+    db.commit()
+    return data
 
 def get(*, db: Session, id: int) -> User:
     query = db.query(User).filter(User.id == id).first()
@@ -20,4 +21,5 @@ def get(*, db: Session, id: int) -> User:
 
 def delete(*, db: Session, id: int) -> User:
     query = db.query(User).filter(User.id == id).delete()
+    db.commit()
     return query

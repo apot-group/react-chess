@@ -34,7 +34,7 @@ def get_current_user(db: Session = Depends(get_db), token: str = Security(oauth2
         token_data = account_entity.TokenPayload(**payload)
     except JWTError:
         raise HTTPException(status_code=401, detail="token expire")
-    user = user_logic.get_user_by_user_id_and_user_name_and_email_and_role_id_join_role(db, token_data.user_id, token_data.user_name, token_data.email, token_data.role_id)
+    user = user_logic.get_user_by_user_id_and_email(db, token_data.user_id, token_data.email)
     if not user:
         raise HTTPException(status_code=403, detail="token wrong")
     return user
@@ -45,7 +45,7 @@ def create_access_token(data):
     expire = datetime.utcnow() + timedelta(minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, config.SECRET_KEY, algorithm=algorithm)
-    return encrypt(encoded_jwt)
+    return encrypt(encoded_jwt), expire
 
 
 def create_fresh_token(data):
@@ -53,7 +53,7 @@ def create_fresh_token(data):
     expire = datetime.utcnow() + timedelta(minutes=config.ACCESS_TOKEN_EXPIRE_MINUTES)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, config.SECRET_KEY, algorithm=algorithm)
-    return encrypt(encoded_jwt)
+    return encrypt(encoded_jwt), expire
 
 
 def encrypt(msg):
