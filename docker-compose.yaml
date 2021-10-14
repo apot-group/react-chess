@@ -1,5 +1,8 @@
 version: '3.8'
 
+x-networks: &chess-networks
+  - chessnet
+
 
 services:
 
@@ -12,6 +15,7 @@ services:
     networks:
       - react-chess
     restart: unless-stopped
+    networks: *chess-networks
 
   postgresql:
     container_name: postgresql
@@ -24,6 +28,25 @@ services:
     volumes:
       - ./postgres/postgres.conf:/etc/postgresql/postgresql.conf
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    restart: unless-stopped
+    networks: *chess-networks
+    
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-duynguyenngoc@hotmail.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-1q2w3e4r}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+    depends_on:
+      - postgresql
+    networks: *chess-networks
 
   socket:
     container_name: socket
@@ -33,6 +56,8 @@ services:
       context: ./socket
       dockerfile: ./Dockerfile
     command: node server
+    networks: *chess-networks
+
       
   api-webrtc:
     container_name: api
@@ -41,16 +66,19 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "3002:3002"
-    command: uvicorn main:app --host 0.0.0.0 --port 8081 --reload
+    volumes:
+      - ./api-webrtc/app:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 3002 --reload
+    restart: unless-stopped
     depends_on:
       - postgresql
+    networks: *chess-networks
     
-
-
-  # web-client:
-  #   build:
-  #     context: ./client
-  #     dockerfile: ./Dockerfile
-
+    
 networks:
-  react-chess:
+  chessnet:
+    driver: bridge
+
+volumes:
+   pgadmin:
+    

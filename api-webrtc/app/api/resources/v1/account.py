@@ -19,7 +19,6 @@ def login(
     db_session: Session = Depends(get_db),
     form_data: OAuth2PasswordRequestForm = Depends(OAuth2PasswordRequestForm)
 ):
-
     user_db = user_logic.get_user_by_email(db_session, form_data.username)
     if not user_db:
         raise HTTPException(status_code=400, detail="Incorrect username")
@@ -28,7 +27,7 @@ def login(
     token_create = account_entity.TokenCreate(**user_db.__dict__)
     access_token, access_expire = token_helper.create_access_token(token_create.__dict__)
     refresh_token, refresh_expire = token_helper.create_fresh_token(token_create.__dict__)
-    token,  = account_entity.Token(
+    token = account_entity.Token(
         access_token = access_token, 
         refresh_token = refresh_token,
         expire_token= access_expire,

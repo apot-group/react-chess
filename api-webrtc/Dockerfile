@@ -35,4 +35,4 @@ RUN pip install -r requirements.txt
 # copy project
 COPY ./app/ /app/
 
-EXPOSE 8081
+EXPOSE 3002

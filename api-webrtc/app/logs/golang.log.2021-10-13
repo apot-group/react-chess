@@ -1,0 +1,32 @@
+2021-10-13 23:26:31,769 - INFO - Started server process [12752]
+2021-10-13 23:26:31,771 - INFO - Waiting for application startup.
+2021-10-13 23:26:31,787 - INFO - Application startup complete.
+2021-10-13 23:26:31,788 - INFO - Uvicorn running on http://0.0.0.0:3002 (Press CTRL+C to quit)
+2021-10-13 23:28:38,859 - INFO - Shutting down
+2021-10-13 23:28:38,967 - INFO - Waiting for application shutdown.
+2021-10-13 23:28:38,969 - INFO - Application shutdown complete.
+2021-10-13 23:28:38,969 - INFO - Finished server process [12752]
+2021-10-13 23:28:41,391 - INFO - Started server process [5712]
+2021-10-13 23:28:41,391 - INFO - Waiting for application startup.
+2021-10-13 23:28:41,392 - INFO - Application startup complete.
+2021-10-13 23:28:41,393 - INFO - Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+2021-10-13 23:28:51,701 - INFO - Shutting down
+2021-10-13 23:28:51,813 - INFO - Waiting for application shutdown.
+2021-10-13 23:28:51,813 - INFO - Application shutdown complete.
+2021-10-13 23:28:51,814 - INFO - Finished server process [5712]
+2021-10-13 23:28:54,080 - INFO - Started server process [15772]
+2021-10-13 23:28:54,081 - INFO - Waiting for application startup.
+2021-10-13 23:28:54,082 - INFO - Application startup complete.
+2021-10-13 23:28:54,083 - INFO - Uvicorn running on http://0.0.0.0:8081 (Press CTRL+C to quit)
+2021-10-13 23:29:15,959 - INFO - Shutting down
+2021-10-13 23:29:16,071 - INFO - Waiting for application shutdown.
+2021-10-13 23:29:16,071 - INFO - Application shutdown complete.
+2021-10-13 23:29:16,072 - INFO - Finished server process [15772]
+2021-10-13 23:29:18,570 - INFO - Started server process [11800]
+2021-10-13 23:29:18,571 - INFO - Waiting for application startup.
+2021-10-13 23:29:18,571 - INFO - Application startup complete.
+2021-10-13 23:29:18,572 - INFO - Uvicorn running on http://0.0.0.0:3001 (Press CTRL+C to quit)
+2021-10-13 23:37:02,929 - INFO - Shutting down
+2021-10-13 23:37:03,039 - INFO - Waiting for application shutdown.
+2021-10-13 23:37:03,039 - INFO - Application shutdown complete.
+2021-10-13 23:37:03,040 - INFO - Finished server process [11800]

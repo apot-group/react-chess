@@ -1,16 +1,28 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Login, Game } from './views';
+import {React} from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { Game, Login } from './views';
+import isAuth from "./admin/auth";
 
+
+
+function PrivateRoute ({component: Component, authed, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authed === true
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+    />
+  )
+}
 
 export const Routes = () => {
+    const auth = isAuth()
     return (
       <Switch>
-        <Route path="/" exact></Route>
-        <Route path="/login" component={Login}></Route>
-        <Route path="/game" component={Game}></Route>
-
-
+         <Route path='/login' component={Login} />
+         <PrivateRoute path='/game' authed={auth} component={Game}/>
+         <PrivateRoute path='/' authed={auth} component={Game}/>
       </Switch>
     );
   };
