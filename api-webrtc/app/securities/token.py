@@ -28,13 +28,15 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/account/login/access-toke
 
 
 def get_current_user(db: Session = Depends(get_db), token: str = Security(oauth2_scheme)):
+    print("start get usre")
     try:
         token = decrypt(token)
         payload = jwt.decode(token, config.SECRET_KEY, algorithms=[algorithm])
         token_data = account_entity.TokenPayload(**payload)
+        print(token_data)
     except JWTError:
         raise HTTPException(status_code=401, detail="token expire")
-    user = user_logic.get_user_by_user_id_and_email(db, token_data.user_id, token_data.email)
+    user = user_logic.get_user_by_user_id_and_email(db,  token_data.user_id, token_data.email)
     if not user:
         raise HTTPException(status_code=403, detail="token wrong")
     return user

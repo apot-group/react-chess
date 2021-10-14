@@ -18,7 +18,8 @@ def get_user_by_email(db_session: Session, email: str) -> User:
 
 
 def get_user_by_user_id_and_email(db_session: Session, id: int, email: str) -> User:
-    return db_session.query(User) \
-                      .filter(User.id == id,
-                              User,email == email) \
-                      .first()
+    return db_session.query(User).filter(User.id == id, email == email).first()
+
+    
+def get_by_id(db_session: Session, id: int) -> User:
+    return db_session.query(User).filter(User.id == id).first()
