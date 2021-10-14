@@ -33,7 +33,6 @@ def get_current_user(db: Session = Depends(get_db), token: str = Security(oauth2
         token = decrypt(token)
         payload = jwt.decode(token, config.SECRET_KEY, algorithms=[algorithm])
         token_data = account_entity.TokenPayload(**payload)
-        print(token_data)
     except JWTError:
         raise HTTPException(status_code=401, detail="token expire")
     user = user_logic.get_user_by_user_id_and_email(db,  token_data.user_id, token_data.email)

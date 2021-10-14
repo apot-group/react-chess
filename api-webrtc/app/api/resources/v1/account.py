@@ -78,11 +78,9 @@ def create_account(
 
 @router.get("/info")
 def account_info(
-    *, 
-    db_session: Session = Depends(get_db),
     current_user = Depends(token_helper.get_current_user)
 ):
-    user_db = user_info_logic.get_by_user_id_join(db=db_session, id=current_user.id)
+    user_db = user_info_logic.get_by_user_id_join(current_user.id)
     if not user_db:
         raise HTTPException(status_code=404, detail="not Found!")
     return user_db
