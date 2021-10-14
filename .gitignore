@@ -1,6 +1,8 @@
 # api
 __pycache__
 *.ini
+*.log
+*.log.*
 
 # frontend and socket
 node_modules
