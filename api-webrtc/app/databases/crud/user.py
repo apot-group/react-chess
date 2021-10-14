@@ -10,8 +10,8 @@ def create(*, db: Session, form_data: UserCreate) -> User:
     db.refresh(load_model)
     return load_model
 
-def update(*, db: Session, form_data: dict) -> User:
-    data = db.query(User).filter(User.id == form_data.id).update(form_data, synchronize_session = False)
+def update(*, db: Session, id: int, form_data: dict) -> User:
+    data = db.query(User).filter(User.id == id).update(form_data, synchronize_session = False)
     db.commit()
     return data
 

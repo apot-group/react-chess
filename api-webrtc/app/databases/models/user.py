@@ -1,6 +1,8 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime, Boolean, DECIMAL
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, DateTime, Boolean, DECIMAL, ForeignKey
+from sqlalchemy.sql.sqltypes import Date
 from databases.db import Base
 from sqlalchemy.orm import relationship
+
 
 class User(Base):
     __tablename__ = "user"
@@ -12,3 +14,5 @@ class User(Base):
     password = Column(String(255), nullable=False)
     create_date = Column(DateTime, nullable=False)
     update_date = Column(DateTime, nullable=True, default=None)
+
+

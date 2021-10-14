@@ -30,6 +30,7 @@ export default class GameMain extends React.Component {
 
     }
     componentDidMount(){
+        
 
         SocketIo.emit("joinRoom", { userName: 'duy', roomId: '1' });
         SocketIo.on("message", (data) => {
