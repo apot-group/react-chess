@@ -1,6 +1,6 @@
 from databases.models.user_info import UserInfo
-
 from databases.transaction import db_psycopg2
+
 
 def get_by_user_id_join(id: int) -> UserInfo:
     postgreSQL_select_Query = """
