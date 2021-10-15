@@ -4,6 +4,7 @@ import Menu from '../menu/Menu';
 import RoomDetails from './RoomDetails';
 import initialiseChessBoard from '../../logic/chess/init-chessboard';
 import SocketIo from '../../services/socket';
+import Account from '../account/Account';
 
 
 export default class GameMain extends React.Component {
@@ -88,10 +89,9 @@ export default class GameMain extends React.Component {
                     squares = {this.state.squares} // make sent to board squares array now
                     onClick = {this.onClick} // sent status of location click now
                     sendMessage={this.sendMessage} // message sent from client on chat box
-                    messagesArray={this.state.messagesArray} // array of total chat mess
-        
-
+                    messagesArray={this.state.messagesArray} // array of total chat mess        
                 />
+                <Account/>
             </div>
         );
     }

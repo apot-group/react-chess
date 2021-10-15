@@ -39,7 +39,7 @@ export default class LoginDialog extends React.Component {
             let isRemember = this.state.isRemember;
             const result = await axios({
                 method: "post",
-                url: BASE_URL + "account/login/access-token",
+                url: BASE_URL + "/account/login/access-token",
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data" },
             })
