@@ -1,9 +1,10 @@
 # api
 __pycache__
-*.ini
+env.ini
 *.log
 *.log.*
 
 # frontend and socket
 node_modules
-.env*
+.env.*
+.DS_Store
