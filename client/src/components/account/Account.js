@@ -22,7 +22,7 @@ export default class Account extends React.Component{
         return (
             <div className='avatar'>
                 {this.state.avatar_url === null ? <Avatar size={50} icon={ <UserOutlined /> }/> :
-                <img className='image' src={this.state.avatar_url}></img>
+                <img className='image' src={this.state.avatar_url} alt="avatar"></img>
                 }
             </div>
         );
