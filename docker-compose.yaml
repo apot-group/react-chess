@@ -6,16 +6,16 @@ x-networks: &chess-networks
 
 services:
 
-  redis:
-    container_name: redis
-    image: redis:6-alpine
-    ports:
-      - "6379:6379"
-    command: redis-server --requirepass password
-    networks:
-      - react-chess
-    restart: unless-stopped
-    networks: *chess-networks
+  # redis:
+  #   container_name: redis
+  #   image: redis:6-alpine
+  #   ports:
+  #     - "6379:6379"
+  #   command: redis-server --requirepass password
+  #   networks:
+  #     - react-chess
+  #   restart: unless-stopped
+  #   networks: *chess-networks
 
   postgresql:
     container_name: postgresql
@@ -27,6 +27,7 @@ services:
       - POSTGRES_PASSWORD=1q2w3e4r
     volumes:
       - ./postgres/postgres.conf:/etc/postgresql/postgresql.conf
+      - postgres-data:/var/lib/postgresql/data
     command: postgres -c config_file=/etc/postgresql/postgresql.conf
     restart: unless-stopped
     networks: *chess-networks
@@ -48,31 +49,31 @@ services:
       - postgresql
     networks: *chess-networks
 
-  socket:
-    container_name: socket
-    ports:
-      - "3001:3001"
-    build:
-      context: ./socket
-      dockerfile: ./Dockerfile
-    command: node server
-    networks: *chess-networks
+  # socket:
+  #   container_name: socket
+  #   ports:
+  #     - "3001:3001"
+  #   build:
+  #     context: ./socket
+  #     dockerfile: ./Dockerfile
+  #   command: node server
+  #   networks: *chess-networks
 
       
-  api-webrtc:
-    container_name: api
-    build:
-      context: ./api-webrtc
-      dockerfile: ./Dockerfile
-    ports:
-      - "3002:3002"
-    volumes:
-      - ./api-webrtc/app:/app
-    command: uvicorn main:app --host 0.0.0.0 --port 3002 --reload
-    restart: unless-stopped
-    depends_on:
-      - postgresql
-    networks: *chess-networks
+  # api-webrtc:
+  #   container_name: api
+  #   build:
+  #     context: ./api-webrtc
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - "3002:3002"
+  #   volumes:
+  #     - ./api-webrtc/app:/app
+  #   command: uvicorn main:app --host 0.0.0.0 --port 3002 --reload
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - postgresql
+  #   networks: *chess-networks
     
     
 networks:
@@ -81,4 +82,5 @@ networks:
 
 volumes:
    pgadmin:
+   postgres-data:
     

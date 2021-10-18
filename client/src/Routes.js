@@ -1,6 +1,6 @@
 import {React} from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { Game, Login } from './views';
+import { Game, Login, DashBoard } from './views';
 import isAuth from "./admin/auth";
 
 
@@ -22,7 +22,8 @@ export const Routes = () => {
       <Switch>
          <Route path='/login' component={Login} />
          <PrivateRoute path='/game' authed={auth} component={Game}/>
-         <PrivateRoute path='/' authed={auth} component={Game}/>
+         <Route path='/dashboard' component={DashBoard}/>
+         {/* <PrivateRoute path='/' authed={auth} component={Game}/> */}
       </Switch>
     );
   };
