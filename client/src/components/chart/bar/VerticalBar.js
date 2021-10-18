@@ -6,12 +6,14 @@ export default class VerticalBar extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            name: props.name || "Top User Pay for Game",
+            time: props.time || "10-2021",
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Duy Nguyen', 'Hung Le', 'My Le', 'An Dang', 'Huy Hoang', 'Vin Tran'],
                 datasets: [
                     {
-                        label: '# User',
-                        data: [12, 19, 3, 5, 2, 3],
+                        label: '# user/usd/month',
+                        data: [120, 190, 30, 70, 46, 43],
                         backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -46,14 +48,11 @@ export default class VerticalBar extends React.Component{
               
         }
     }
-    componentDidMount(){
-      
-    }
     render(){
         return (
-            <div>
+            <div className='vertical-bar'>
                  <div className='header'>
-                <h1 className='title'>Vertical Bar Chart</h1>
+                <h1 className='title'>{this.state.name + " " + this.state.time}</h1>
                 </div>
                 <Bar data={this.state.data} options={this.state.options} />
             </div> 
