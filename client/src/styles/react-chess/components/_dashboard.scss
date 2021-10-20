@@ -1,10 +1,46 @@
 .dashboard{
-    display: flex;
-    padding-top: 10px;
-    .user-pay{
-        margin-bottom: 10px;
-        padding-top: 5px;
-        width: 600px;
+    display: inline-block;
+    margin-left: 40px;
+    .filter{
+        height: 100px;
     }
+    .total{
+        display: flex;
+        margin-top: 40px;
+        padding-left: 35px;
+        width: 1800px;
+        height: 270px;
+        .item{
+            margin-left: 65px;
+        }
+    }
+    .pay-time{
+        margin-top: 40px;
+        width: 1800px;
+        height: 400px;
+        margin-left: 35px;
+        box-shadow: rgba(143, 168, 191, 0.35) 0px 8px 20px 0px; 
+        padding-bottom: -10px;
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+    }
+    .col-one{
+        width: 1800px;
+        height: 390px;
+        display: flex;
+        .item{
+            box-shadow: rgba(143, 168, 191, 0.35) 0px 8px 20px 0px; 
+            margin-left: 35px;
+            // border: 1px solid #5a4747;
+            // border-radius: 25px;
+            padding-bottom: -10px;
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+      
+    }
+    
     
 }

@@ -6,8 +6,7 @@ export default class VerticalBar extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            name: props.name || "Top User Pay for Game",
-            time: props.time || "10-2021",
+            name: props.name || "Most Paid Users",
             data: {
                 labels: ['Duy Nguyen', 'Hung Le', 'My Le', 'An Dang', 'Huy Hoang', 'Vin Tran'],
                 datasets: [
@@ -52,7 +51,7 @@ export default class VerticalBar extends React.Component{
         return (
             <div className='vertical-bar'>
                  <div className='header'>
-                <h1 className='title'>{this.state.name + " " + this.state.time}</h1>
+                  <h1 className='title'>{this.state.name}</h1>
                 </div>
                 <Bar data={this.state.data} options={this.state.options} />
             </div> 
