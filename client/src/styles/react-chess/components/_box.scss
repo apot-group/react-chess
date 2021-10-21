@@ -1,4 +1,5 @@
 .box{
+    display: block;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     font-variant: tabular-nums;
     line-height: 1.5715;
@@ -6,7 +7,26 @@
     width: 217px;
     height: 210px;
     box-shadow: rgba(143, 168, 191, 0.35) 0px 8px 20px 0px; 
-    .title{
+    .box-title{
         margin-left: 10px;
+    }
+    .box-avatar{
+        // align-items: center;
+        margin-top: -20px;
+
+        text-align: center;
+        img{
+            height: 120px;
+        }
+    }
+    .box-value{
+        h1{
+            font-weight: 200;
+
+        }
+        font-size: 14px;
+        text-align: center;
+        // margin-right: 15px;
+        margin-top: -15px;
     }
 }
