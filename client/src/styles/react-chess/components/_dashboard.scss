@@ -1,39 +1,55 @@
 .dashboard{
-    display: inline-block;
+    margin: 0 auto;
+    display: block;
     margin-left: 40px;
+    // width: 1700px;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+
+    .view{
+        display: block;
+        height: 45px;
+        padding-left: 15px;
+        button{
+            margin-left: 20px;
+            min-width: 120px;
+            height: 40px;
+        }
+    }
     .filter{
-        height: 100px;
+    // width: 1700px;
+        display: block;
+        float: right;
+        margin-right: 90px;
+
     }
     .total{
         display: flex;
-        margin-top: 40px;
+        margin-top: 84px;
         padding-left: 35px;
-        width: 1800px;
         height: 270px;
         .item{
             margin-left: 65px;
         }
     }
     .pay-time{
-        margin-top: 40px;
-        width: 1800px;
-        height: 400px;
+        margin-top: 70px;
+        width: 1630px;
         margin-left: 35px;
         box-shadow: rgba(143, 168, 191, 0.35) 0px 8px 20px 0px; 
         padding-bottom: -10px;
             padding-top: 10px;
             padding-left: 10px;
             padding-right: 10px;
+        padding-bottom: 2rem;
+        
     }
     .col-one{
-        width: 1800px;
         height: 390px;
         display: flex;
         .item{
             box-shadow: rgba(143, 168, 191, 0.35) 0px 8px 20px 0px; 
             margin-left: 35px;
-            // border: 1px solid #5a4747;
-            // border-radius: 25px;
             padding-bottom: -10px;
             padding-top: 10px;
             padding-left: 10px;
