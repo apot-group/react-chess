@@ -1,9 +1,9 @@
 import { Card } from 'antd';
 import * as React from 'react';
 import GameStatus from './GameStatus'
-import ChessBoard from '../chess/ChessBoard'
-import ChessFooter from '../chess/ChessFooter'
-import ChatClient from '../chat/ChatClient'
+import ChessBoard from './chess/ChessBoard'
+import ChessFooter from './chess/ChessFooter'
+import ChatClient from './ChatClient'
 
 
 export default class RoomDetails extends React.Component {

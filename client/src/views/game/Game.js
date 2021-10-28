@@ -1,13 +1,13 @@
 
 import React from 'react';
-import Menu from '../menu/Menu';
+import Menu from './chess/Menu';
 import RoomDetails from './RoomDetails';
-import initialiseChessBoard from '../../logic/chess/init-chessboard';
+import initialiseChessBoard from './logic/chess/init-chessboard';
 import SocketIo from '../../services/socket';
-import Account from '../account/Account';
+import Account from '../../components/account/Account';
 
 
-export default class GameMain extends React.Component {
+export class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +29,7 @@ export default class GameMain extends React.Component {
         // this.subscribeUser = this.subscribeUser.bind(this)
         this.onGameTypeSelected = this.onGameTypeSelected.bind(this)
 
-    }
+        }
     componentDidMount(){
         
 
@@ -44,27 +44,27 @@ export default class GameMain extends React.Component {
 
     }
  
-    // newMessageListener(messageObj){
-    //     if (messageObj.userName === this.state.currentUser) {
-    //         messageObj.from = 'self';
-    //       }
-    //       this.setState({
-    //         messagesArray: [...this.state.messagesArray, messageObj]
-    //       });
-    // }
-    // newUserListener(newUserObj){
-    //     this.setState({
-    //         roomId: newUserObj.roomId,
-    //         roomUsers: newUserObj.roomUsers
-    //       });
-    // }
-    // subscribeUser(userInfo){
-    //     console.log(userInfo)
-    //     this.setState({currentUser: userInfo.userName});
+    newMessageListener(messageObj){
+        if (messageObj.userName === this.state.currentUser) {
+            messageObj.from = 'self';
+          }
+          this.setState({
+            messagesArray: [...this.state.messagesArray, messageObj]
+          });
+    }
+    newUserListener(newUserObj){
+        this.setState({
+            roomId: newUserObj.roomId,
+            roomUsers: newUserObj.roomUsers
+          });
+    }
+    subscribeUser(userInfo){
+        console.log(userInfo)
+        this.setState({currentUser: userInfo.userName});
 
 
-    //     // return {currentUser: this.state.currentUser, roomId: this.state.roomId}
-    // }
+        // return {currentUser: this.state.currentUser, roomId: this.state.roomId}
+    }
 
     onGameTypeSelected(e){console.log(e); this.setState({gameType: e.target.value}); return this.state.gameType}
     onClick(i){ return i}

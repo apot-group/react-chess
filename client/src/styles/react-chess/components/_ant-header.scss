@@ -1,0 +1,65 @@
+.ant-header-page{
+    font: 400 14px/1.6 Graphik,sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100%;
+
+    .header-final{
+        margin-top: 15px;
+        transition: color .4s cubic-bezier(.19, 1, .22, 1),opacity .4s cubic-bezier(.19, 1, .22, 1);
+        top: 8px;
+        left: 8px;
+        width: calc(100% - 16px);
+        height: 66px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 calc(40px - 8px);
+        .header-avatar{
+            img{
+                height: 50px;
+            }
+        }
+        .header-content {
+            width: 100%;
+            padding-top: 1rem;
+            padding-left: 1rem;
+            display: block;
+            .header-left-menu{
+                width: 50%;
+                float:  left;
+                display: inline-flex;
+    
+                li{
+                    .link-menu{
+                        color: black;
+                    }
+                    list-style-type: none;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 40px;
+                }
+            
+            }
+            .header-right-menu{
+                float: right;
+                li{
+
+                    list-style-type: none;
+                    margin-block-start: 1em;
+                    margin-block-end: 1em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding-inline-start: 40px;
+                }
+               
+                display: inline-flex;
+    
+            }
+        }
+    }
+   
+}

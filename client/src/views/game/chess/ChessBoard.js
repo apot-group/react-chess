@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import Square from '../../logic/chess/square';
+import Square from '../logic/chess/square';
 
 export default class ChessBoard extends React.Component {
     constructor(props) {
