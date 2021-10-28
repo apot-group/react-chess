@@ -68,12 +68,23 @@ export default class LoginDialog extends React.Component {
         }
     }
     componentDidUpdate(){this.handleAll()}
+    componentDidMount(){
+        const script = document.createElement("script");
+
+        script.src = process.env.PUBLIC_URL + "/js/test.js";
+        script.async = true;
+    
+        document.body.appendChild(script);
+    }
 
     render() {
         return ( 
-            <div className="App">
+            <div className="login">
+                {/* <div className='content--canvas'></div> */}
+                <canvas id="canvas"></canvas>
                 { this.state.showAlert ? <Alert message={this.state.alertDescription} type="warning" /> : ""}
                 <form className="form">
+                    <img className="logo" alt="logo" src ={process.env.PUBLIC_URL + '/img/logo.png'}></img>
                 <CustomInput
                     labelText="Email"
                     id="email"
@@ -97,7 +108,9 @@ export default class LoginDialog extends React.Component {
                     Log in
                 </Button>
                 </form>
+        
             </div>
+
         );
     }
 }

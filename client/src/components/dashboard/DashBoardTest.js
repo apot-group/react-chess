@@ -41,7 +41,7 @@ export default class DashBoardTest extends React.Component{
                    <div className=''><Box name={"Total Games"} value = {7} currency={""} icon={GameIcon} isIncrease = {true} increaseValue = {33}/></div>
                    <div className='item'><Box name="Total Developer" value = "20" currency="" icon={DeveloperIcon} isIncrease = {true} increaseValue = {33}/></div>
                    <div className='item'><Box name="Users Active" value = "140.1" currency="K" icon={UserIcon} isIncrease = {false} increaseValue = {12}/></div>
-                   <div className='item'><Box name="Time Playing - Min" value = "24.2" currency="K" icon={IngameIcon} isIncrease = {true} increaseValue = {53}/></div>
+                   <div className='item'><Box name="Time Playing - Min" value = "24.2" currency="M" icon={IngameIcon} isIncrease = {true} increaseValue = {53}/></div>
                    <div className='item'><Box name="Time Ads - Min" value = "12.6" currency="K" icon={AdsIcon} isIncrease = {true} increaseValue = {27}/></div>
                    <div className='item'><Box name="Total Revenues - $" value = "21.1" currency="M" icon={CurrencyIcon} isIncrease = {false} increaseValue = {15}/></div>
                </div>

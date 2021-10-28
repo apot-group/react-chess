@@ -11,7 +11,7 @@ export default class VerticalBar extends React.Component{
                 labels: ['Duy Nguyen', 'Hung Le', 'My Le', 'An Dang', 'Huy Hoang', 'Vin Tran', 'Heo', 'Ha', 'Leu Leu', 'Con Céc'],
                 datasets: [
                     {
-                        label: '# user/usd/month',
+                        label: 'Minute',
                         data: [120, 190, 30, 70, 46, 43,111,111,111,111],
                         backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

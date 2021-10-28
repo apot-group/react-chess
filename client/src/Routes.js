@@ -21,7 +21,7 @@ export const Routes = () => {
     return (
       <Switch>
          <Route path='/login' component={Login} />
-         <PrivateRoute path='/game' authed={auth} component={Game}/>
+         <PrivateRoute path='/game'  component={Game}/>
          <Route path='/dashboard' component={DashBoard}/>
          {/* <PrivateRoute path='/' authed={auth} component={Game}/> */}
       </Switch>
