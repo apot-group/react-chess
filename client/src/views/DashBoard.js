@@ -15,7 +15,7 @@ import AntHeader from '../components/header/AntHeader';
 
 
 
-export class DashBoard extends React.Component{
+export default class DashBoard extends React.Component{
     constructor(props){
         super(props);
         this.state = {

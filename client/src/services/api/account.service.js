@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-export const API_URL = process.env.REACT_APP_API_V1
+const API_URL = process.env.REACT_APP_API_V1
 
 
 const getUserInfo = (successcallback, errorcallback) => {
@@ -22,7 +22,23 @@ const getUserInfo = (successcallback, errorcallback) => {
            errorcallback(err);
         }
       })
-
 }
   
-export {getUserInfo,}
+const register = (username, email, password) => {
+  return axios.post(`${API_URL}/account/signup`, {
+    username,
+    email,
+    password,
+  });
+};
+
+const logout = () => {
+  localStorage.clear();
+};
+
+
+export default {
+  getUserInfo,
+  register,
+  logout
+}

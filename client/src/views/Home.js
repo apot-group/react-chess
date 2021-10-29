@@ -3,7 +3,7 @@ import React from 'react';
 import AntHeader from '../components/header/AntHeader';
 
 
-export class Home extends React.Component{
+export default class Home extends React.Component{
     constructor(props){
     super(props);
         this.state = {}

@@ -9,7 +9,7 @@ import { Alert } from 'antd';
 export const BASE_URL = process.env.REACT_APP_API_V1
 
 
-export class Login extends React.Component {
+export default class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -85,7 +85,6 @@ export class Login extends React.Component {
                 <canvas id="canvas"></canvas>
                 <form className="form">
                 { this.state.showAlert ? <Alert message={this.state.alertDescription} type="warning" /> : ""}
-
                     <img className="logo" alt="logo" src ={process.env.PUBLIC_URL + '/img/logo.png'}></img>
                 <CustomInput
                     labelText="Email"

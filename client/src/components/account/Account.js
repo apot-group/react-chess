@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import {getUserInfo} from '../../services/api/account-service'
+import AccountService from '../../services/api/account.service'
 
 
 export default class Account extends React.Component{
@@ -12,7 +12,7 @@ export default class Account extends React.Component{
         }
     }
     componentDidMount(){
-        getUserInfo(response =>{
+        AccountService.getUserInfo(response =>{
             this.setState({avatar_url: response.data.avatar_url})
         },(err) => {
             alert(err);

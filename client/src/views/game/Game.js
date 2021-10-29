@@ -7,7 +7,7 @@ import SocketIo from '../../services/socket';
 import Account from '../../components/account/Account';
 
 
-export class Game extends React.Component {
+export default class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
